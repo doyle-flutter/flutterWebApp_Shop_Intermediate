@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 // Body LayOut
-class MainWebLayOut extends StatelessWidget {
+class WebLayOut extends StatelessWidget {
   final WidgetBuilder mainContent;
   final WidgetBuilder menu;
-  const MainWebLayOut({this.mainContent, this.menu});
+  const WebLayOut({this.mainContent, this.menu});
 
   @override
   Widget build(BuildContext context) {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myshop/providers/mainProvider.dart';
 import 'package:myshop/repos/socket.dart';
+import 'package:myshop/views/commonComponent/layout/webLayout.dart';
 import 'package:myshop/views/main/component/mainContentComponent.dart';
-import 'package:myshop/views/main/layout/mainWebLayout.dart';
 import 'package:myshop/views/wrappers/reactWrapper.dart';
 import 'package:provider/provider.dart';
 
@@ -34,6 +34,6 @@ class MainPage extends StatelessWidget{
   //   );
   // }
   Widget _webScaffold(BuildContext context)
-    => Scaffold(body: MainWebLayOut(menu: (BuildContext context) => Container(child: Center(child: Text("MENU"),),), mainContent: (BuildContext context) => MainContentComponent()));
-  Widget _appScaffold(BuildContext context) => Scaffold(body: MainContentComponent());
+    => Scaffold(body: WebLayOut(menu: (BuildContext context) => Container(child: Center(child: Text("MENU"),),), mainContent: (BuildContext context) => MainContentComponent(ea: 10,crossAxisCount: 5,)));
+  Widget _appScaffold(BuildContext context) => Scaffold(body: MainContentComponent(crossAxisCount: 2,ea: 10,));
 }
