@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class MainContentComponent extends StatelessWidget {
   final int crossAxisCount;
   final int ea;
-  const MainContentComponent({@required this.crossAxisCount, @required this.ea})
+  final List data;
+  const MainContentComponent({@required this.crossAxisCount, @required this.ea, @required this.data})
     : assert(ea != null), assert(crossAxisCount != null);
 
   @override
@@ -17,20 +18,29 @@ class MainContentComponent extends StatelessWidget {
     controller: ScrollController(),
     itemCount: this.ea,
     itemBuilder: (BuildContext context, int index) => GestureDetector(
-      onTap: () => Navigator.of(context).pushNamed('/detailPage'),
+      onTap: () => Navigator.of(context).pushNamed('/detailPage/${this.data[index]['pid'].toString()}'),
       child: GridTile(
+        
         child: Container(
-          color: Colors.red,
-          child: Center(
-            child: Text(
-              index.toString(),
-              style: TextStyle(
+          decoration: BoxDecoration(
+            color: Colors.red,
+            image: DecorationImage(
+              image: NetworkImage(this.data[index]['img'].toString()),
+              fit: BoxFit.cover
+            )
+          ),
+        ),
+        footer: Container(
+          padding: EdgeInsets.all(10.0),
+          color: Colors.grey[600],
+          child: Text(
+            this.data[index]['title'].toString(),
+            style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 22.0
-              ),
             ),
-          )
+          ),
         ),
       ),
     )
