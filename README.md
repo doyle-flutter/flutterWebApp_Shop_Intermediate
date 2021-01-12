@@ -1,16 +1,6 @@
-# myshop
+# Flutter WEB & APP + Server(Node.js)
 
-A new Flutter application.
+### 쇼핑몰 웹 및 앱을 만들어보는 내용입니다
+(주의 : Dart 및 Widget, Node.js 에대한 입문 단계의 수업이 선행되어야합니다)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Link : [Youtube](https://youtu.be/1rUTQfIUM6c)
