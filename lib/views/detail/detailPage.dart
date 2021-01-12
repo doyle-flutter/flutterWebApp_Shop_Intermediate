@@ -23,14 +23,14 @@ class DetailPage extends PageClass{
       padding: EdgeInsets.all(20.0),
       controller: ScrollController(),
       children: [
-        Container(child: Text("${_detailProvider.data[0]['category'].toString()} > ${_detailProvider.data[0]['scategory'].toString()}"),),
+        Container(child: Text("${_detailProvider.data.category} ${_detailProvider.data.scategory.isEmpty ? '' :'> ${_detailProvider.data.scategory}'}"),),
         Container(
           width: MediaQuery.of(context).size.width/2,
           height: MediaQuery.of(context).size.width/2,
           margin: EdgeInsets.symmetric(vertical: 10.0),
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage(_detailProvider.data[0]['img'].toString()),
+              image: NetworkImage(_detailProvider.data.img),
               fit: BoxFit.cover
             )
           ),
@@ -42,8 +42,8 @@ class DetailPage extends PageClass{
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Container(child: Text(_detailProvider.data[0]['title'].toString(), style: _titleTxtStyle,),),
-              Container(child: Text("${_detailProvider.data[0]['price'].toString()} 원", style: _titleTxtStyle),),
+              Container(child: Text(_detailProvider.data.title, style: _titleTxtStyle,),),
+              Container(child: Text("${_detailProvider.data.price} 원", style: _titleTxtStyle),),
             ],
           ),
         ),
@@ -51,7 +51,7 @@ class DetailPage extends PageClass{
           margin: EdgeInsets.symmetric(vertical: 10.0),
           padding: EdgeInsets.all(20.0),
           color: Colors.blue[50],
-          child: Text(_detailProvider.data[0]['des'].toString(),),
+          child: Text(_detailProvider.data.des,),
         ),
       ],
     );
@@ -61,7 +61,7 @@ class DetailPage extends PageClass{
       onPressed: () => showDialog(
         context: context,
         builder: (BuildContext context) => AlertDialog(
-          title: Text(" '${_detailProvider.data[0]['title'].toString()}' 을(를) 구매하시겠습니까?"),
+          title: Text(" '${_detailProvider.data.title}' 을(를) 구매하시겠습니까?"),
           actions: [
             TextButton(
               child: Text("닫기"),

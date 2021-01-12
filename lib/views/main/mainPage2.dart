@@ -5,6 +5,7 @@ import 'package:myshop/views/commonComponent/menuComponent.dart';
 import 'package:myshop/views/main/component/mainContentComponent.dart';
 import 'package:myshop/views/pageClassWrapper/pageClass.dart';
 import 'package:provider/provider.dart';
+import 'package:share/share.dart';
 
 // ignore: must_be_immutable
 class MainPage2 extends PageClass{
@@ -33,7 +34,7 @@ class MainPage2 extends PageClass{
     drawer: Drawer(
       child: MenuComponent(menuData: this.menuData,),
     ),
-    body: MainContentComponent(crossAxisCount: 2,ea: _mainProvider?.data?.length ?? 0, data: _mainProvider?.data ?? [],)
+    body: MainContentComponent(crossAxisCount: 2,ea: _mainProvider?.data?.length ?? 0, data: _mainProvider?.data ?? []),
   );
 
   @override

@@ -1,8 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:myshop/providers/categoryProvider.dart';
 import 'package:myshop/providers/detailProvider.dart';
 import 'package:myshop/providers/mainProvider.dart';
+import 'package:myshop/providers/menuProvider.dart';
 import 'package:myshop/repos/socket.dart';
+import 'package:myshop/views/category/categoryPage.dart';
 import 'package:myshop/views/commonComponent/menuComponent.dart';
 import 'package:myshop/views/detail/detailPage.dart';
 import 'package:myshop/views/main/mainPage.dart';
@@ -15,8 +18,9 @@ void main(){
   return runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider<MainProvider>(create: (_) => MainProvider()),
         ChangeNotifierProvider<SocketConnect>(create: (_) => SocketConnect()),
+        ChangeNotifierProvider<MainProvider>(create: (_) => MainProvider()),
+        ChangeNotifierProvider<MenuProvider>(create: (_) => MenuProvider()),
       ],
       child: MaterialApp(
         // home: MainPage2(),
@@ -48,26 +52,16 @@ void main(){
               builder: (BuildContext context) => MainPage()
             );
           }
-          if(settings.name == '/category'){
-            return MaterialPageRoute(
-              settings: RouteSettings(name: '/category'),
-              maintainState: false,
-              builder: (BuildContext context) => Scaffold(
-                appBar: AppBar(
-                  title: Text("category"),
-                  leading: Container(
-                    child: IconButton(
-                      icon: Icon(Icons.arrow_back_ios),
-                      onPressed: () => Navigator.of(context).pop(),
-                    ),
-                  ),
-                ),
-                endDrawer: Drawer(
-                  child: MenuComponent(menuData: menuData,),
-                ),
-              )
-            );
-          }
+          // if(settings.name == '/category'){
+          //   return MaterialPageRoute(
+          //     settings: RouteSettings(name: '/category'),
+          //     maintainState: false,
+          //     builder: (BuildContext context) => ChangeNotifierProvider(
+          //       create: (_) => CategoryProvider(path: ''),
+          //       child: CategoryPage()
+          //     )
+          //   );
+          // }
           // if(settings.name == '/detailPage'){
           //   return MaterialPageRoute(
           //       settings: RouteSettings(name: '/detailPage'),
@@ -98,6 +92,22 @@ void main(){
                   menuData: menuData
                 ),
               )
+            );
+          }
+          if(_uri.pathSegments.first == 'category'){
+            if(_uri.pathSegments.length < 2 || _uri.pathSegments[1].toString() == '') return MaterialPageRoute(
+                settings: RouteSettings(name: '/'),
+                maintainState: false,
+                builder: (BuildContext context) => MainPage2(menuData: menuData,)
+            );
+            final String _path = _uri.pathSegments[1].toString();
+            return MaterialPageRoute(
+                settings: RouteSettings(name: '/category/$_path'),
+                maintainState: false,
+                builder: (BuildContext context) => ChangeNotifierProvider(
+                  create: (_) => CategoryProvider(path: _path),
+                  child: CategoryPage()
+                )
             );
           }
           return MaterialPageRoute(

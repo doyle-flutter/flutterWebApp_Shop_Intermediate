@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:myshop/models/viewDataModel.dart';
 
 class MainContentComponent extends StatelessWidget {
   final int crossAxisCount;
   final int ea;
-  final List data;
+  final List<ViewDataModel> data;
   const MainContentComponent({@required this.crossAxisCount, @required this.ea, @required this.data})
     : assert(ea != null), assert(crossAxisCount != null);
 
@@ -18,14 +19,13 @@ class MainContentComponent extends StatelessWidget {
     controller: ScrollController(),
     itemCount: this.ea,
     itemBuilder: (BuildContext context, int index) => GestureDetector(
-      onTap: () => Navigator.of(context).pushNamed('/detailPage/${this.data[index]['pid'].toString()}'),
+      onTap: () => Navigator.of(context).pushNamed('/detailPage/${this.data[index].pid}'),
       child: GridTile(
-        
         child: Container(
           decoration: BoxDecoration(
             color: Colors.red,
             image: DecorationImage(
-              image: NetworkImage(this.data[index]['img'].toString()),
+              image: NetworkImage(this.data[index].img),
               fit: BoxFit.cover
             )
           ),
@@ -34,11 +34,11 @@ class MainContentComponent extends StatelessWidget {
           padding: EdgeInsets.all(10.0),
           color: Colors.grey[600],
           child: Text(
-            this.data[index]['title'].toString(),
+            this.data[index].title,
             style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 22.0
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 22.0
             ),
           ),
         ),
