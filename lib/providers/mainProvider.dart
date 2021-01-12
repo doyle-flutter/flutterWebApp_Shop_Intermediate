@@ -1,7 +1,3 @@
-// ignore: avoid_web_libraries_in_flutter
-// import 'dart:js' deferred as web;
-
-// ignore: avoid_web_libraries_in_flutter
 import 'dart:js' as web;
 import 'package:flutter/foundation.dart';
 import 'package:myshop/models/viewDataModel.dart';
