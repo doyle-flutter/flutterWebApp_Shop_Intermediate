@@ -1,4 +1,3 @@
-
 // var menuDummy = [
 //   {'name':'Home'},
 //   {
@@ -11,7 +10,6 @@
 //     ]
 //   }
 // ];
-
 import 'package:flutter/cupertino.dart';
 
 class MenuModel{

@@ -11,7 +11,6 @@ class CategoryProvider with ChangeNotifier{
   }
   Future<void> _init() async{
     final List _result = await _connect.get(url: "http://192.168.0.3:3000/category/${this.path}");
-    print('CategoryProvider : $_result');
     this.data = _result.map((e) => ViewDataModel.fromJson(e)).toList();
     notifyListeners();
     return;

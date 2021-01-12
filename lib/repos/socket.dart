@@ -10,11 +10,8 @@ class SocketConnect with ChangeNotifier{
   void _init(){
     if(this.socket == null){
       try{
-        print("Socket Try");
-        this.socket = io(url, OptionBuilder()
-            // .disableAutoConnect()
-            .setTransports(['websocket']).build()).connect();
-        //this.socket = io(url, <String, dynamic>{'transports': ['websocket']})..connect();
+        this.socket = io(url, OptionBuilder().setTransports(['websocket']).build())
+          .connect();
       }
       catch(e){
         this.socket = null;

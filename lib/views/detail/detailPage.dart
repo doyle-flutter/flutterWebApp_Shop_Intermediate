@@ -100,7 +100,6 @@ class DetailPage extends PageClass{
   @override
   Widget build(BuildContext context) {
     _detailProvider = Provider.of<DetailProvider>(context);
-    print(_detailProvider.data);
     return super.build(context);
   }
 }

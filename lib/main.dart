@@ -73,7 +73,6 @@ void main(){
           //   );
           // }
           Uri _uri = Uri.parse(settings.name);
-          print(_uri.pathSegments);
           if(_uri.pathSegments.first == 'detailPage'){
             if(_uri.pathSegments.length < 2 || _uri.pathSegments[1].toString() == '') return MaterialPageRoute(
                 settings: RouteSettings(name: '/'),
