@@ -75,17 +75,17 @@ class DetailPage extends PageClass{
 
   @override
   Widget appScaffold(BuildContext context) => Scaffold(
-      appBar: AppBar(
-        leading: Container(
-          child: IconButton(
-            icon: Icon(Icons.arrow_back_ios),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
+    appBar: AppBar(
+      leading: Container(
+        child: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      endDrawer: Drawer(child: MenuComponent(menuData: this.menuData,),),
-      body: _commonDetailWidget(context),
-      floatingActionButton: _fab(context),
+    ),
+    endDrawer: Drawer(child: MenuComponent(menuData: this.menuData,),),
+    body: _commonDetailWidget(context),
+    floatingActionButton: _fab(context),
   );
 
   @override
